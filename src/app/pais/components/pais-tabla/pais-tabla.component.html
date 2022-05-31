@@ -1,0 +1,31 @@
+<table
+    *ngIf="paises.length>0"
+    class="table table-hover"
+>
+    <thead>
+        <tr>
+            <th>Índice</th>
+            <th>Bandera</th>
+            <th>Nombre</th>
+            <th>Población</th>
+            <th>Más</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pais of paises, index as i">
+            <td>{{i+1}}</td>
+            <td>
+                <img
+                    class='small-flag'
+                    src={{pais.flags.png}}
+                    alt="{{pais.name.common}}"
+                >
+            </td>
+            <td>{{pais.capital}}, {{pais.name.common}}</td>
+            <td>{{pais.population | number}}</td>
+            <td>
+                <a [routerLink]="['/pais',pais.cca2]">Ver...</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
